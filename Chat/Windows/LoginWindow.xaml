@@ -5,15 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chat.Windows"
         mc:Ignorable="d"
-        Title="Login" Height="350" Width="300" Loaded="Window_Loaded">
+        Title="Login" Height="260" Width="300">
     <StackPanel>
-        <StackPanel Margin="10,20,10,0">
-            <Border Width="92" Height="122" Background="Gray" HorizontalAlignment="Left">
-                <Image x:Name="imgSender" Width="90" Height="120" Stretch="Uniform"/>
+        <StackPanel Margin="10,20,10,0" Orientation="Horizontal">
+            <Border Width="92" Height="122" Background="Gray" HorizontalAlignment="Left" Margin="0,0,10,0">
+                <Image x:Name="imgSender" Width="90" Height="120" Stretch="Uniform"
+                       Source="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png"/>
             </Border>
+            <StackPanel Width="160">
+                <Label x:Name="lblEmail" Content="Email" FontSize="12"/>
+                <TextBox x:Name="txtEmail"/>
+                <Label x:Name="lblPass" Content="Password" FontSize="12"/>
+                <PasswordBox x:Name="txtPass"/>
+            </StackPanel>
         </StackPanel>
-        <TextBox x:Name="txtMessege" Height="90" VerticalScrollBarVisibility="Visible"
-                 HorizontalContentAlignment="Center" Margin="10"/>
-        <Button x:Name="btnSend" Content="Send messege" Width="90" Height="30" Margin="20" Click="BtnSend_Click" />
+        <!--<TextBox x:Name="txtMessege" Height="90" VerticalScrollBarVisibility="Visible"
+                 HorizontalContentAlignment="Center" Margin="10"/>-->
+        <Button x:Name="btnLogin" Content="Login" Width="90" Height="30" Margin="0,20,0,5" Click="BtnLogin_Click"/>
+        <TextBlock x:Name="txtReg" Text="Registration" FontSize="10" HorizontalAlignment="Center"
+                   MouseLeftButtonDown="TxtReg_Click" Cursor="Hand">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Blue"/>
+                            <Setter Property="TextDecorations" Value="Underline"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
     </StackPanel>
 </Window>

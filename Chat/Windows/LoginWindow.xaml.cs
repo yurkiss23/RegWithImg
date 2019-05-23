@@ -23,5 +23,17 @@ namespace Chat.Windows
         {
             InitializeComponent();
         }
+
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TxtReg_Click(object sender, MouseButtonEventArgs e)
+        {
+            //MessageBox.Show("!!!");
+            RegWindow reg = new RegWindow();
+            reg.ShowDialog();
+        }
     }
 }
