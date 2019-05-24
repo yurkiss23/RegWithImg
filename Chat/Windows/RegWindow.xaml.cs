@@ -39,18 +39,19 @@ namespace Chat.Windows
                 && string.IsNullOrEmpty(ImgStr))
             {
                 MessageBox.Show("not all fields and images are filled");
+                return false;
             }
-            return false;
+            return true;
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             if (!IsFill())
             {
-                MessageBoxResult result = MessageBox.Show("not all fields and images are filled! try again?", "!!!", MessageBoxButton.OKCancel);
+                MessageBoxResult result = MessageBox.Show("try again?", "!!!", MessageBoxButton.OKCancel);
                 switch (result)
                 {
-                    case MessageBoxResult.OK:
+                    case MessageBoxResult.OK:txtFname.Focus();
                         return;
                     case MessageBoxResult.Cancel:this.Close();
                         return;

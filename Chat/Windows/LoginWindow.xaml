@@ -19,8 +19,6 @@
                 <PasswordBox x:Name="txtPass" MaxLength="6" PasswordChanged="PasswordChanged"/>
             </StackPanel>
         </StackPanel>
-        <!--<TextBox x:Name="txtMessege" Height="90" VerticalScrollBarVisibility="Visible"
-                 HorizontalContentAlignment="Center" Margin="10"/>-->
         <Button x:Name="btnLogin" Content="Login" Width="90" Height="30" Margin="0,20,0,5" Click="BtnLogin_Click"
                 IsEnabled="False"/>
         <TextBlock x:Name="txtReg" Text="Registration" FontSize="10" HorizontalAlignment="Center"

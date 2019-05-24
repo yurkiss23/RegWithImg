@@ -96,6 +96,9 @@ namespace Chat.Windows
         {
             RegWindow reg = new RegWindow();
             reg.ShowDialog();
+            this.txtEmail.Text = reg.txtEmail.Text;
+            this.txtPass.Password = reg.txtPass.Password;
+            BtnLogin_Click(sender, e);
         }
 
         private void SelectionChanged_Email(object sender, RoutedEventArgs e)

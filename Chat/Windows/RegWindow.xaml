@@ -24,8 +24,6 @@
                 <PasswordBox x:Name="txtPass" MaxLength="6"/>
             </StackPanel>
         </StackPanel>
-        <!--<TextBox x:Name="txtMessege" Height="90" VerticalScrollBarVisibility="Visible"
-                 HorizontalContentAlignment="Center" Margin="10"/>-->
         <Button x:Name="btnAdd" Content="Add new user" Width="90" Height="30" Margin="20" Click="BtnAdd_Click" />
     </StackPanel>
 </Window>
