@@ -31,6 +31,7 @@ namespace Chat.Windows
         {
             InitializeComponent();
             _context = new EFContext();
+            txtEmail.Focus();
         }
 
         public bool IsFind()
@@ -71,8 +72,8 @@ namespace Chat.Windows
                     case MessageBoxResult.No:
                         RegWindow reg = new RegWindow();
                         reg.ShowDialog();
-                        txtEmail.Text = "a@a.com";
-                        txtPass.Password = "aaaaaa";
+                        this.txtEmail.Text = reg.txtEmail.Text;
+                        this.txtPass.Password = reg.txtPass.Password;
                         BtnLogin_Click(sender, e);
                         return;
                     default:

@@ -28,10 +28,37 @@ namespace Chat.Windows
         {
             InitializeComponent();
             _context = new EFContext();
+            txtFname.Focus();
+        }
+
+        public bool IsFill()
+        {
+            if (string.IsNullOrEmpty(txtFname.Text)
+                && string.IsNullOrEmpty(txtLname.Text)
+                && string.IsNullOrEmpty(txtEmail.Text)
+                && string.IsNullOrEmpty(ImgStr))
+            {
+                MessageBox.Show("not all fields and images are filled");
+            }
+            return false;
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
+            if (!IsFill())
+            {
+                MessageBoxResult result = MessageBox.Show("not all fields and images are filled! try again?", "!!!", MessageBoxButton.OKCancel);
+                switch (result)
+                {
+                    case MessageBoxResult.OK:
+                        return;
+                    case MessageBoxResult.Cancel:this.Close();
+                        return;
+                    default:
+                        break;
+                }
+            }
+
             _context.Users.Add(new User
             {
                 FirstName = txtFname.Text,
@@ -40,7 +67,9 @@ namespace Chat.Windows
                 Photo = ImgStr,
                 Password = txtPass.Password
             });
+            _context.SaveChanges();
             MessageBox.Show("added new user");
+            this.Close();
         }
 
         private void mlbd_Img(object sender, MouseButtonEventArgs e)
