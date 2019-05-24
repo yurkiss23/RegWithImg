@@ -61,6 +61,5 @@ namespace Chat.Helpers
             }
             catch { return null; }
         }
-
     }
 }

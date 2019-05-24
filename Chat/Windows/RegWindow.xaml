@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chat.Windows"
         mc:Ignorable="d"
-        Title="RegWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
-        
-    </Grid>
+        Title="RegWindow" Height="240" Width="300" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" >
+    <StackPanel>
+        <StackPanel Margin="10,20,10,0" Orientation="Horizontal">
+            <Border Width="92" Height="122" Background="Gray" HorizontalAlignment="Left">
+                <Image x:Name="imgUser" Width="90" Height="120" Stretch="Uniform"
+                       MouseLeftButtonDown="mlbd_Img"
+                       Source="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png"/>
+            </Border>
+            <StackPanel Margin="5,0,0,0" Width="175">
+                <TextBlock x:Name="tbFname" Text="FirstName:" FontSize="9"/>
+                <TextBox x:Name="txtFname"/>
+                <TextBlock x:Name="tbLname" Text="LastName:" FontSize="9"/>
+                <TextBox x:Name="txtLname"/>
+                <TextBlock x:Name="tbEmail" Text="Email:" FontSize="9"/>
+                <TextBox x:Name="txtEmail"/>
+                <TextBlock x:Name="tbPass" Text="Password:" FontSize="9"/>
+                <PasswordBox x:Name="txtPass"/>
+            </StackPanel>
+        </StackPanel>
+        <!--<TextBox x:Name="txtMessege" Height="90" VerticalScrollBarVisibility="Visible"
+                 HorizontalContentAlignment="Center" Margin="10"/>-->
+        <Button x:Name="btnAdd" Content="Add new user" Width="90" Height="30" Margin="20" Click="BtnAdd_Click" />
+    </StackPanel>
 </Window>

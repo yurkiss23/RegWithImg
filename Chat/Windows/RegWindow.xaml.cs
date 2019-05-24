@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Chat.Entities;
+using Chat.Helpers;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +22,35 @@ namespace Chat.Windows
     /// </summary>
     public partial class RegWindow : Window
     {
+        private EFContext _context;
+        public string ImgStr { get; set; }
         public RegWindow()
         {
             InitializeComponent();
+            _context = new EFContext();
+        }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            _context.Users.Add(new User
+            {
+                FirstName = txtFname.Text,
+                LastName = txtLname.Text,
+                Email = txtEmail.Text,
+                Photo = ImgStr,
+                Password = txtPass.Password
+            });
+            MessageBox.Show("added new user");
+        }
+
+        private void mlbd_Img(object sender, MouseButtonEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == true)
+            {
+                ImgStr = ImageHelper.ImgToBase64(System.Drawing.Image.FromFile(ofd.FileName));
+                imgUser.Source = new BitmapImage(new Uri(ofd.FileName));
+            }
         }
     }
 }
