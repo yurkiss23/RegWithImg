@@ -5,23 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chat.Windows"
         mc:Ignorable="d"
-        Title="Login" Height="260" Width="300">
+        Title="Login" Height="260" Width="300" WindowStartupLocation="CenterScreen">
     <StackPanel>
         <StackPanel Margin="10,20,10,0" Orientation="Horizontal">
             <Border Width="92" Height="122" Background="Gray" HorizontalAlignment="Left" Margin="0,0,10,0">
-                <Image x:Name="imgSender" Width="90" Height="120" Stretch="Uniform"
+                <Image x:Name="imgUser" Width="90" Height="120" Stretch="Uniform"
                        Source="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png"/>
             </Border>
             <StackPanel Width="160">
                 <Label x:Name="lblEmail" Content="Email" FontSize="12"/>
-                <TextBox x:Name="txtEmail"/>
+                <TextBox x:Name="txtEmail" SelectionChanged="SelectionChanged_Email"/>
                 <Label x:Name="lblPass" Content="Password" FontSize="12"/>
-                <PasswordBox x:Name="txtPass"/>
+                <PasswordBox x:Name="txtPass" MaxLength="6" PasswordChanged="PasswordChanged"/>
             </StackPanel>
         </StackPanel>
         <!--<TextBox x:Name="txtMessege" Height="90" VerticalScrollBarVisibility="Visible"
                  HorizontalContentAlignment="Center" Margin="10"/>-->
-        <Button x:Name="btnLogin" Content="Login" Width="90" Height="30" Margin="0,20,0,5" Click="BtnLogin_Click"/>
+        <Button x:Name="btnLogin" Content="Login" Width="90" Height="30" Margin="0,20,0,5" Click="BtnLogin_Click"
+                IsEnabled="False"/>
         <TextBlock x:Name="txtReg" Text="Registration" FontSize="10" HorizontalAlignment="Center"
                    MouseLeftButtonDown="TxtReg_Click" Cursor="Hand">
             <TextBlock.Style>
