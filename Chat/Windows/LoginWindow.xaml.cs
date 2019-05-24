@@ -24,6 +24,9 @@ namespace Chat.Windows
     {
         private EFContext _context;
         public int UserID { get; set; }
+        public string Fname { get; set; }
+        public string Lname { get; set; }
+        public string Email { get; set; }
         public LoginWindow()
         {
             InitializeComponent();
@@ -38,6 +41,9 @@ namespace Chat.Windows
                 tmp = _context.Users.Where(u => u.Email == txtEmail.Text)
                     .Where(u => u.Password == txtPass.Password).First();
                 UserID = tmp.Id;
+                Fname = tmp.FirstName;
+                Lname = tmp.LastName;
+                Email = tmp.Email;
             }
             catch
             {
@@ -54,10 +60,35 @@ namespace Chat.Windows
         {
             if (!IsFind())
             {
-                MessageBox.Show("user no found!");
-                RegWindow reg = new RegWindow();
-                reg.ShowDialog();
+                MessageBoxResult result = MessageBox.Show("user no found! try again?", "!!!", MessageBoxButton.YesNoCancel);
+                switch (result)
+                {
+                    case MessageBoxResult.Cancel:
+                        this.Close();
+                        break;
+                    case MessageBoxResult.Yes:
+                        return;
+                    case MessageBoxResult.No:
+                        RegWindow reg = new RegWindow();
+                        reg.ShowDialog();
+                        txtEmail.Text = "a@a.com";
+                        txtPass.Password = "aaaaaa";
+                        BtnLogin_Click(sender, e);
+                        return;
+                    default:
+                        break;
+                }
             }
+
+            MainWindow main = new MainWindow();
+            main.Fname = this.Fname;
+            main.Lname = this.Lname;
+            main.Email = this.Email;
+            main.ShowDialog();
+            txtEmail.Text = null;
+            txtPass.Password = null;
+            imgUser.Source = new BitmapImage(new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png"));
+            this.Close();
         }
 
         private void TxtReg_Click(object sender, MouseButtonEventArgs e)
@@ -78,7 +109,6 @@ namespace Chat.Windows
         {
             if (IsFind())
             {
-                //MessageBox.Show("!!!");
                 imgUser.Source = ImageHelper.BitmapToImageSource(ImageHelper.Base64ToImg(
                     _context.Users.Where(u => u.Id == UserID).First().Photo));
             }

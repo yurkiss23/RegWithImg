@@ -20,9 +20,24 @@ namespace Chat
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string Fname { get; set; }
+        public string Lname { get; set; }
+        public string Email { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void BtnSend_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("messege is send!");
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtFname.Text = Fname;
+            txtLname.Text = Lname;
+            txtEmail.Text = Email;
         }
     }
 }

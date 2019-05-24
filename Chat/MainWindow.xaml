@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chat"
         mc:Ignorable="d"
-        Title="Chat" Height="450" Width="800">
-    <Grid>
+        Title="Chat" Height="350" Width="300" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" >
+    <StackPanel>
+        <StackPanel Margin="10,20,10,0" Orientation="Horizontal">
+            <Border Width="92" Height="122" Background="Gray" HorizontalAlignment="Left">
+                <Image x:Name="imgSender" Width="90" Height="120" Stretch="Uniform"/>
+            </Border>
+            <StackPanel Margin="5,0,0,0" Width="175">
+                <TextBlock x:Name="tbFname" Text="FirstName:"/>
+                <TextBlock x:Name="txtFname" FontSize="16"/>
+                <TextBlock x:Name="tbLname" Text="LastName:"/>
+                <TextBlock x:Name="txtLname" FontSize="16"/>
+                <TextBlock x:Name="tbEmail" Text="Email:"/>
+                <TextBlock x:Name="txtEmail" FontSize="16"/>
+            </StackPanel>
+        </StackPanel>
         
-    </Grid>
+        <TextBox x:Name="txtMessege" Height="90" VerticalScrollBarVisibility="Visible"
+                 HorizontalContentAlignment="Center" Margin="10"/>
+        <Button x:Name="btnSend" Content="Send messege" Width="90" Height="30" Margin="20" Click="BtnSend_Click" />
+    </StackPanel>
 </Window>
